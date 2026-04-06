@@ -6,151 +6,197 @@
 <title>M.J. Aashik Rasool — AI Research Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#0a0a0c;
-  --bg2:#111115;
-  --bg3:#1a1a20;
-  --text:#e8e6e1;
-  --text2:#9b9a97;
-  --accent:#c9a55a;
-  --accent2:#e8c96e;
-  --accent-dim:rgba(201,165,90,.12);
-  --border:#2a2a30;
-  --serif:'Instrument Serif',Georgia,serif;
-  --sans:'DM Sans',system-ui,sans-serif;
-  --mono:'JetBrains Mono',monospace;
+  --bg:#07080f;
+  --bg2:#0c0e18;
+  --text:#eef0f6;
+  --text2:#8b8fa8;
+  --accent:#7eb8ff;
+  --accent2:#a78bfa;
+  --accent3:#f0abfc;
+  --glass:rgba(255,255,255,.04);
+  --glass2:rgba(255,255,255,.07);
+  --glass-border:rgba(255,255,255,.08);
+  --glass-border2:rgba(255,255,255,.12);
+  --glow1:rgba(126,184,255,.15);
+  --glow2:rgba(167,139,250,.15);
+  --glow3:rgba(240,171,252,.1);
+  --display:'Playfair Display',Georgia,serif;
+  --body:'Sora',system-ui,sans-serif;
+  --mono:'Fira Code',monospace;
+  --radius:20px;
 }
 html{scroll-behavior:smooth;font-size:16px}
-body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 ::selection{background:var(--accent);color:var(--bg)}
 
+/* MESH GRADIENT BACKGROUND */
+.mesh-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:hidden}
+.mesh-bg .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.35;animation:orbFloat 20s ease-in-out infinite}
+.mesh-bg .orb1{width:600px;height:600px;background:radial-gradient(circle,rgba(126,184,255,.4),transparent 70%);top:-10%;left:-10%;animation-delay:0s}
+.mesh-bg .orb2{width:500px;height:500px;background:radial-gradient(circle,rgba(167,139,250,.35),transparent 70%);top:30%;right:-15%;animation-delay:-7s}
+.mesh-bg .orb3{width:450px;height:450px;background:radial-gradient(circle,rgba(240,171,252,.3),transparent 70%);bottom:-5%;left:20%;animation-delay:-14s}
+.mesh-bg .orb4{width:350px;height:350px;background:radial-gradient(circle,rgba(126,184,255,.25),transparent 70%);top:60%;left:50%;animation-delay:-10s}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(60px,-40px) scale(1.1)}50%{transform:translate(-30px,50px) scale(.95)}75%{transform:translate(40px,20px) scale(1.05)}}
+
+/* GLASS UTILITY */
+.glass{background:var(--glass);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--glass-border);border-radius:var(--radius)}
+.glass-strong{background:var(--glass2);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);border:1px solid var(--glass-border2);border-radius:var(--radius)}
+
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(20px);background:rgba(10,10,12,.7);border-bottom:1px solid var(--border);transition:transform .3s}
-nav .logo{font-family:var(--serif);font-size:1.15rem;color:var(--accent)}
-nav .links{display:flex;gap:1.8rem;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text2)}
+nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:100;padding:.6rem 1.8rem;display:flex;align-items:center;gap:2rem;background:rgba(255,255,255,.03);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid rgba(255,255,255,.06);border-radius:100px;transition:all .3s}
+nav .logo{font-family:var(--display);font-size:1.1rem;color:var(--accent);font-weight:700;white-space:nowrap}
+nav .links{display:flex;gap:1.5rem;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:var(--text2);font-weight:500}
+nav .links a{transition:color .2s;position:relative}
 nav .links a:hover{color:var(--accent)}
-.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.3rem;cursor:pointer}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 6vw 4rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-40%;right:-20%;width:60vw;height:60vw;background:radial-gradient(circle,rgba(201,165,90,.06) 0%,transparent 60%);pointer-events:none}
-.hero-content{max-width:720px;position:relative;z-index:1}
-.hero-label{font-family:var(--mono);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem}
-.hero-label::before{content:'';width:2rem;height:1px;background:var(--accent)}
-.hero h1{font-family:var(--serif);font-size:clamp(2.8rem,6vw,4.5rem);line-height:1.08;font-weight:400;margin-bottom:1.5rem}
-.hero h1 em{font-style:italic;color:var(--accent)}
-.hero p{font-size:1.05rem;color:var(--text2);max-width:560px;margin-bottom:2.5rem;line-height:1.7}
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 6vw 4rem;position:relative;z-index:1}
+.hero-content{max-width:700px;position:relative;z-index:1}
+.hero-label{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:1.5rem;display:flex;align-items:center;gap:.8rem}
+.hero-label::before{content:'';width:2.5rem;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px}
+.hero h1{font-family:var(--display);font-size:clamp(3rem,6.5vw,5rem);line-height:1.05;font-weight:400;margin-bottom:1.5rem}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:1rem;color:var(--text2);max-width:540px;margin-bottom:2.5rem;line-height:1.8;font-weight:300}
 .hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
-.tag{font-size:.72rem;padding:.35rem .8rem;border:1px solid var(--border);border-radius:100px;color:var(--text2);letter-spacing:.02em;transition:all .25s}
-.tag:hover{border-color:var(--accent);color:var(--accent)}
+.tag{font-size:.68rem;padding:.4rem .9rem;border:1px solid var(--glass-border2);border-radius:100px;color:var(--text2);letter-spacing:.02em;transition:all .3s;background:var(--glass);backdrop-filter:blur(10px);font-weight:400}
+.tag:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 20px var(--glow1)}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
-.btn{padding:.7rem 1.6rem;border-radius:6px;font-size:.85rem;font-weight:500;transition:all .3s;cursor:pointer;border:none}
-.btn-primary{background:var(--accent);color:var(--bg);font-family:var(--sans)}
-.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}
-.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text);font-family:var(--sans)}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.btn{padding:.75rem 1.8rem;border-radius:100px;font-size:.82rem;font-weight:500;transition:all .3s;cursor:pointer;border:none;font-family:var(--body);letter-spacing:.02em}
+.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);box-shadow:0 4px 30px var(--glow1)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 40px var(--glow1)}
+.btn-outline{background:var(--glass);border:1px solid var(--glass-border2);color:var(--text);backdrop-filter:blur(10px)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 20px var(--glow1)}
 
-.hero-photo{position:absolute;right:6vw;top:50%;transform:translateY(-50%);width:280px;height:340px;border-radius:16px;overflow:hidden;border:2px solid var(--border)}
+.hero-photo{position:absolute;right:6vw;top:50%;transform:translateY(-50%);width:280px;height:340px;border-radius:24px;overflow:hidden;border:2px solid var(--glass-border2);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 80px var(--glow2);z-index:1}
 .hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(7,8,15,.6));pointer-events:none}
 
 /* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.stat{background:var(--bg);padding:2.5rem 2rem;text-align:center}
-.stat-val{font-family:var(--serif);font-size:2.2rem;color:var(--accent);margin-bottom:.3rem}
-.stat-label{font-size:.75rem;color:var(--text2);text-transform:uppercase;letter-spacing:.08em}
+.stats-wrap{position:relative;z-index:1;padding:0 6vw}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--glass-border);margin-top:-2rem}
+.stat{background:var(--glass);backdrop-filter:blur(20px);padding:2.5rem 2rem;text-align:center;transition:background .3s}
+.stat:hover{background:var(--glass2)}
+.stat-val{font-family:var(--display);font-size:2.4rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.3rem}
+.stat-label{font-size:.7rem;color:var(--text2);text-transform:uppercase;letter-spacing:.1em;font-weight:500}
 
 /* SECTIONS */
-section{padding:6rem 6vw}
-.section-label{font-family:var(--mono);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem}
-.section-label::before{content:'';width:1.5rem;height:1px;background:var(--accent)}
-.section-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;margin-bottom:3rem}
+section{padding:6rem 6vw;position:relative;z-index:1}
+.section-label{font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:.8rem;display:flex;align-items:center;gap:.8rem;font-weight:500}
+.section-label::before{content:'';width:1.5rem;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px}
+.section-title{font-family:var(--display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;margin-bottom:3rem}
 
 /* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
-.about-text{font-size:.95rem;color:var(--text2);line-height:1.8}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.about-text{font-size:.92rem;color:var(--text2);line-height:1.9;font-weight:300}
 .about-text p+p{margin-top:1rem}
-.about-cards{display:grid;gap:1rem}
-.about-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.5rem}
-.about-card-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text2);margin-bottom:.3rem}
-.about-card-val{font-size:.95rem;font-weight:500}
-.about-card-sub{font-size:.78rem;color:var(--text2);margin-top:.15rem}
+.about-text strong{color:var(--text);font-weight:500}
+.about-cards{display:grid;gap:.8rem}
+.about-card{padding:1.2rem 1.5rem;transition:all .3s}
+.about-card:hover{border-color:var(--accent);box-shadow:0 0 30px var(--glow1)}
+.about-card-title{font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent2);margin-bottom:.4rem;font-weight:500}
+.about-card-val{font-size:.9rem;font-weight:500}
+.about-card-sub{font-size:.75rem;color:var(--text2);margin-top:.15rem;font-weight:300}
 
 /* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
-.skill-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:border-color .3s}
-.skill-card:hover{border-color:var(--accent)}
-.skill-card-icon{font-size:1.6rem;margin-bottom:1rem}
-.skill-card h3{font-size:1rem;margin-bottom:1rem;font-weight:500}
+.skills-section{background:transparent}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem}
+.skill-card{padding:1.8rem;transition:all .3s;position:relative;overflow:hidden}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));opacity:0;transition:opacity .3s}
+.skill-card:hover{border-color:var(--glass-border2);box-shadow:0 8px 40px rgba(0,0,0,.3)}
+.skill-card:hover::before{opacity:1}
+.skill-card-icon{font-size:1.5rem;margin-bottom:1rem;display:inline-block;padding:.6rem;background:var(--glass);border-radius:12px;border:1px solid var(--glass-border)}
+.skill-card h3{font-size:.95rem;margin-bottom:1rem;font-weight:500}
 .skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}
-.skill-tags .tag{font-size:.68rem;padding:.25rem .6rem}
+.skill-tags .tag{font-size:.64rem;padding:.25rem .6rem}
 
 /* EXPERIENCE */
-.timeline{position:relative;padding-left:2rem;border-left:1px solid var(--border)}
-.timeline-item{position:relative;margin-bottom:3rem;padding-left:1.5rem}
-.timeline-item::before{content:'';position:absolute;left:-2.35rem;top:.4rem;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
-.timeline-item h3{font-size:1.05rem;font-weight:500;margin-bottom:.15rem}
-.timeline-item .role{font-size:.85rem;color:var(--accent);margin-bottom:.3rem}
-.timeline-item .meta{font-size:.75rem;color:var(--text2);margin-bottom:.8rem;display:flex;gap:1rem}
+.timeline{position:relative;padding-left:2rem;border-left:2px solid var(--glass-border2)}
+.timeline-item{position:relative;margin-bottom:3rem;padding-left:1.8rem}
+.timeline-item::before{content:'';position:absolute;left:-2.45rem;top:.4rem;width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 20px var(--glow1);border:2px solid var(--bg)}
+.timeline-item h3{font-size:1.05rem;font-weight:600;margin-bottom:.15rem}
+.timeline-item .role{font-size:.85rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:500;margin-bottom:.3rem}
+.timeline-item .meta{font-size:.72rem;color:var(--text2);margin-bottom:.8rem;display:flex;gap:1rem;font-weight:400}
 .timeline-item ul{list-style:none;padding:0}
-.timeline-item li{font-size:.85rem;color:var(--text2);padding:.25rem 0;padding-left:1rem;position:relative}
-.timeline-item li::before{content:'—';position:absolute;left:0;color:var(--border)}
+.timeline-item li{font-size:.82rem;color:var(--text2);padding:.3rem 0;padding-left:1.2rem;position:relative;font-weight:300}
+.timeline-item li::before{content:'';position:absolute;left:0;top:.65rem;width:6px;height:6px;border-radius:50%;border:1px solid var(--accent);opacity:.5}
 
 /* PUBLICATIONS */
-.pub-list{display:grid;gap:1.2rem}
-.pub{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.6rem 1.8rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:start;transition:border-color .3s}
-.pub:hover{border-color:var(--accent)}
-.pub-year{font-family:var(--mono);font-size:.75rem;color:var(--accent);padding:.3rem .6rem;background:var(--accent-dim);border-radius:6px;white-space:nowrap}
-.pub-info h3{font-size:.92rem;font-weight:500;margin-bottom:.4rem;line-height:1.4}
-.pub-venue{font-size:.78rem;color:var(--text2);line-height:1.5}
-.pub-badge{font-size:.65rem;padding:.2rem .55rem;border-radius:4px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;font-weight:500}
-.pub-badge.published{background:rgba(76,175,80,.15);color:#81c784}
-.pub-badge.first{background:rgba(201,165,90,.15);color:var(--accent)}
-.pub-badge.coauthor{background:rgba(100,149,237,.15);color:#90b4f0}
-.pub-link{display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;color:var(--accent);margin-top:.4rem;opacity:.7;transition:opacity .2s}
+.pub-list{display:grid;gap:1rem}
+.pub{padding:1.5rem 1.8rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:start;transition:all .3s}
+.pub:hover{border-color:var(--glass-border2);box-shadow:0 8px 40px rgba(0,0,0,.3),0 0 30px var(--glow2)}
+.pub-year{font-family:var(--mono);font-size:.72rem;color:var(--accent);padding:.35rem .7rem;background:linear-gradient(135deg,rgba(126,184,255,.1),rgba(167,139,250,.1));border-radius:8px;white-space:nowrap;font-weight:500;border:1px solid rgba(126,184,255,.15)}
+.pub-info h3{font-size:.88rem;font-weight:500;margin-bottom:.4rem;line-height:1.5}
+.pub-venue{font-size:.75rem;color:var(--text2);line-height:1.5;font-weight:300}
+.pub-venue strong{color:var(--accent);font-weight:600}
+.pub-badge{font-size:.62rem;padding:.25rem .6rem;border-radius:6px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;font-weight:600}
+.pub-badge.published{background:rgba(76,200,120,.1);color:#6ee7a0;border:1px solid rgba(76,200,120,.15)}
+.pub-badge.first{background:linear-gradient(135deg,rgba(126,184,255,.1),rgba(167,139,250,.1));color:var(--accent);border:1px solid rgba(126,184,255,.15)}
+.pub-badge.coauthor{background:rgba(240,171,252,.1);color:var(--accent3);border:1px solid rgba(240,171,252,.15)}
+.pub-link{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;color:var(--accent);margin-top:.5rem;opacity:.6;transition:all .2s;font-weight:500}
 .pub-link:hover{opacity:1}
+
+/* PUB CATEGORY TOGGLE */
+.pub-tabs{display:flex;gap:.5rem;margin-bottom:2rem}
+.pub-tab{padding:.5rem 1.2rem;border-radius:100px;font-size:.75rem;font-weight:500;cursor:pointer;border:1px solid var(--glass-border);background:var(--glass);color:var(--text2);transition:all .3s;font-family:var(--body);letter-spacing:.02em}
+.pub-tab.active{background:linear-gradient(135deg,rgba(126,184,255,.15),rgba(167,139,250,.15));border-color:var(--accent);color:var(--accent);box-shadow:0 0 20px var(--glow1)}
+.pub-tab:hover:not(.active){border-color:var(--glass-border2);color:var(--text)}
+.pub-group{display:none}
+.pub-group.active{display:grid;gap:1rem}
 
 /* AWARDS */
 .awards-list{display:grid;gap:.8rem}
-.award{display:flex;align-items:center;gap:1rem;padding:1rem 1.4rem;background:var(--bg2);border:1px solid var(--border);border-radius:10px}
-.award-icon{font-size:1.2rem}
+.award{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.5rem;transition:all .3s}
+.award:hover{border-color:var(--glass-border2);box-shadow:0 4px 30px rgba(0,0,0,.2)}
+.award-icon{font-size:1.3rem;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--glass);border-radius:14px;border:1px solid var(--glass-border);flex-shrink:0}
 .award h4{font-size:.88rem;font-weight:500}
-.award p{font-size:.78rem;color:var(--text2)}
+.award p{font-size:.75rem;color:var(--text2);font-weight:300}
 
 /* CONTACT */
-.contact-section{background:var(--bg2);border-top:1px solid var(--border)}
+.contact-section{background:transparent}
 .contact-inner{max-width:600px}
-.contact-inner p{color:var(--text2);margin-bottom:2rem;font-size:.95rem}
-.contact-links{display:flex;flex-wrap:wrap;gap:1rem}
-.contact-link{display:flex;align-items:center;gap:.5rem;padding:.6rem 1.2rem;border:1px solid var(--border);border-radius:8px;font-size:.82rem;color:var(--text2);transition:all .25s}
-.contact-link:hover{border-color:var(--accent);color:var(--accent)}
+.contact-inner>p{color:var(--text2);margin-bottom:2rem;font-size:.92rem;font-weight:300;line-height:1.8}
+.contact-links{display:flex;flex-wrap:wrap;gap:.8rem}
+.contact-link{display:flex;align-items:center;gap:.5rem;padding:.65rem 1.3rem;font-size:.8rem;color:var(--text2);transition:all .3s;font-weight:400}
+.contact-link:hover{border-color:var(--accent);color:var(--accent);box-shadow:0 0 25px var(--glow1);transform:translateY(-2px)}
 
-footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);border-top:1px solid var(--border)}
+footer{padding:2.5rem 6vw;text-align:center;font-size:.7rem;color:var(--text2);border-top:1px solid var(--glass-border);position:relative;z-index:1;font-weight:300}
 
 /* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.hero-content{animation:fadeUp .8s ease-out}
-.hero-photo{animation:fadeUp 1s ease-out .2s both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+.hero-content{animation:fadeUp .9s ease-out}
+.hero-photo{animation:fadeUp 1.1s ease-out .15s both}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease-out,transform .7s ease-out}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
 /* RESPONSIVE */
 @media(max-width:1100px){
   .hero{padding:8rem 5vw 4rem}
-  .hero-photo{width:220px;height:280px;right:4vw}
+  .hero-photo{width:230px;height:290px;right:4vw}
 }
 @media(max-width:900px){
+  nav{top:.6rem;padding:.5rem 1.2rem;gap:1rem}
   .hero{flex-direction:column;text-align:center;padding:7rem 5vw 3rem;min-height:auto}
   .hero-content{max-width:100%}
   .hero-label{justify-content:center}
   .hero p{margin-left:auto;margin-right:auto}
   .hero-tags{justify-content:center}
   .hero-btns{justify-content:center}
-  .hero-photo{position:relative;right:auto;top:auto;transform:none;margin:2.5rem auto 0;width:180px;height:220px;border-radius:50%;aspect-ratio:1/1;height:auto}
+  .hero-photo{position:relative;right:auto;top:auto;transform:none;margin:2.5rem auto 0;width:180px;height:180px;border-radius:50%}
   .hero-photo img{border-radius:50%}
+  .hero-photo::after{display:none}
   .about-grid{grid-template-columns:1fr}
   .stats{grid-template-columns:repeat(2,1fr)}
+  .stats-wrap{padding:0 5vw}
   .pub{grid-template-columns:1fr;gap:.6rem}
   .pub-year{justify-self:start}
   .pub-badge{justify-self:start}
@@ -158,25 +204,26 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
   section{padding:4rem 5vw}
 }
 @media(max-width:600px){
-  nav{padding:.8rem 1.2rem}
-  nav .links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;flex-direction:column;background:rgba(10,10,12,.97);padding:5rem 2rem 2rem;gap:1.5rem;z-index:99;align-items:center;justify-content:center}
+  nav{padding:.5rem 1rem;gap:.6rem}
+  nav .links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;flex-direction:column;background:rgba(7,8,15,.97);backdrop-filter:blur(30px);padding:5rem 2rem 2rem;gap:1.5rem;z-index:99;align-items:center;justify-content:center}
   nav .links.open{display:flex}
   nav .links a{font-size:1.1rem}
   .menu-toggle{display:block;z-index:200;position:relative}
   .hero{padding:5.5rem 5vw 2.5rem}
-  .hero h1{font-size:2.2rem}
-  .hero p{font-size:.92rem}
-  .hero-photo{width:140px}
-  .hero-tags .tag{font-size:.65rem;padding:.25rem .6rem}
+  .hero h1{font-size:2.4rem}
+  .hero p{font-size:.88rem}
+  .hero-photo{width:140px;height:140px}
+  .hero-tags .tag{font-size:.62rem;padding:.25rem .6rem}
   .hero-btns{flex-direction:column;align-items:center}
   .btn{width:100%;max-width:260px;text-align:center}
   section{padding:3rem 4.5vw}
   .section-title{font-size:1.6rem;margin-bottom:2rem}
   .stats{grid-template-columns:repeat(2,1fr)}
+  .stats-wrap{padding:0 4.5vw}
   .stat{padding:1.5rem 1rem}
   .stat-val{font-size:1.6rem}
-  .stat-label{font-size:.65rem}
-  .about-text{font-size:.88rem}
+  .stat-label{font-size:.62rem}
+  .about-text{font-size:.85rem}
   .about-card{padding:1rem 1.2rem}
   .skills-grid{grid-template-columns:1fr}
   .skill-card{padding:1.3rem}
@@ -184,23 +231,32 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
   .timeline-item{padding-left:1rem}
   .timeline-item h3{font-size:.95rem}
   .pub{padding:1.2rem 1.3rem}
-  .pub-info h3{font-size:.85rem}
-  .award{flex-direction:column;text-align:center;gap:.5rem;padding:.8rem 1rem}
+  .pub-info h3{font-size:.82rem}
+  .award{flex-direction:column;text-align:center;gap:.5rem;padding:1rem}
+  .award-icon{margin:0 auto}
   .contact-links{flex-direction:column}
   .contact-link{justify-content:center}
   footer{padding:1.5rem 4vw}
 }
 @media(max-width:380px){
-  .hero h1{font-size:1.8rem}
-  .hero-photo{width:120px}
+  .hero h1{font-size:1.9rem}
+  .hero-photo{width:120px;height:120px}
   .stat-val{font-size:1.3rem}
   .section-title{font-size:1.4rem}
-  .hero-label{font-size:.65rem}
-  .tag{font-size:.6rem;padding:.2rem .5rem}
+  .hero-label{font-size:.6rem}
+  .tag{font-size:.58rem;padding:.2rem .5rem}
 }
 </style>
 </head>
 <body>
+
+<!-- MESH GRADIENT BG -->
+<div class="mesh-bg">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="orb orb4"></div>
+</div>
 
 <nav>
   <a href="#" class="logo">aashik.dev</a>
@@ -209,7 +265,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
     <a href="#about" onclick="closeMenu()">About</a>
     <a href="#skills" onclick="closeMenu()">Skills</a>
     <a href="#experience" onclick="closeMenu()">Experience</a>
-    <a href="#publications" onclick="closeMenu()">Publications</a>
+    <a href="#publications" onclick="closeMenu()">Research</a>
     <a href="#awards" onclick="closeMenu()">Awards</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
   </div>
@@ -220,7 +276,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
   <div class="hero-content">
     <div class="hero-label">AI Research Engineer &middot; PhD Candidate</div>
     <h1>M.J. Aashik <em>Rasool</em></h1>
-    <p>Building lightweight, efficient image enhancement systems for real-world sensing and medical imaging. PhD candidate at Gachon University. Published in IEEE, Elsevier, TMLR, and MICCAI. Bridging high-fidelity visual processing with real-time edge deployment.</p>
+    <p>Building lightweight, efficient image enhancement systems for real-world sensing and medical imaging. PhD candidate at Gachon University, published in IEEE, Elsevier, TMLR, and MICCAI.</p>
     <div class="hero-tags">
       <span class="tag">Super-Resolution</span>
       <span class="tag">Knowledge Distillation</span>
@@ -236,21 +292,22 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
     </div>
   </div>
   <div class="hero-photo">
-    <!-- FIXED: Use an actual image file instead of truncated base64 -->
     <img src="IMG2.jpg" alt="M.J. Aashik Rasool" />
   </div>
 </section>
 
 <!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="stat-val">10+</div><div class="stat-label">Publications</div></div>
-  <div class="stat"><div class="stat-val">4.3</div><div class="stat-label">PhD GPA / 4.5</div></div>
-  <div class="stat"><div class="stat-val">6+</div><div class="stat-label">Years Research</div></div>
-  <div class="stat"><div class="stat-val">7</div><div class="stat-label">Journal Articles</div></div>
+<div class="stats-wrap">
+  <div class="stats">
+    <div class="stat"><div class="stat-val">10+</div><div class="stat-label">Publications</div></div>
+    <div class="stat"><div class="stat-val">4.3</div><div class="stat-label">PhD GPA / 4.5</div></div>
+    <div class="stat"><div class="stat-val">6+</div><div class="stat-label">Years Research</div></div>
+    <div class="stat"><div class="stat-val">7</div><div class="stat-label">Journal Articles</div></div>
+  </div>
 </div>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" class="reveal">
   <div class="section-label">About</div>
   <h2 class="section-title">Who I am</h2>
   <div class="about-grid">
@@ -260,27 +317,27 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
       <p>I have published in venues including <strong>IEEE Access, Knowledge-Based Systems (Elsevier), TMLR, Sensors (MDPI), and MICCAI</strong>. My research bridges the gap between high-fidelity visual processing and practical real-time deployment for healthcare, environmental monitoring, and edge communication.</p>
     </div>
     <div class="about-cards">
-      <div class="about-card">
+      <div class="about-card glass">
         <div class="about-card-title">Current Role</div>
         <div class="about-card-val">PhD Researcher &amp; Graduate RA</div>
         <div class="about-card-sub">CT Lab, Gachon University</div>
       </div>
-      <div class="about-card">
+      <div class="about-card glass">
         <div class="about-card-title">Education</div>
         <div class="about-card-val">PhD in Computer Engineering</div>
         <div class="about-card-sub">GPA 4.3/4.5 &middot; 2024 &ndash; Present</div>
       </div>
-      <div class="about-card">
+      <div class="about-card glass">
         <div class="about-card-title">Industry Experience</div>
         <div class="about-card-val">Opt-AI.Inc</div>
         <div class="about-card-sub">AI Research Engineer &middot; 2024&ndash;2025</div>
       </div>
-      <div class="about-card">
+      <div class="about-card glass">
         <div class="about-card-title">Focus Areas</div>
         <div class="about-card-val">Image Enhancement &middot; Medical AI &middot; Edge Deployment</div>
         <div class="about-card-sub">Super-resolution, denoising, knowledge distillation</div>
       </div>
-      <div class="about-card">
+      <div class="about-card glass">
         <div class="about-card-title">Based In</div>
         <div class="about-card-val">Seongnam-si, Gyeonggi-do, South Korea</div>
       </div>
@@ -289,11 +346,11 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
 </section>
 
 <!-- SKILLS -->
-<section id="skills" style="background:var(--bg2)">
+<section id="skills" class="skills-section reveal">
   <div class="section-label">Technical Skills</div>
   <h2 class="section-title">What I work with</h2>
   <div class="skills-grid">
-    <div class="skill-card">
+    <div class="skill-card glass">
       <div class="skill-card-icon">&#128300;</div>
       <h3>Computer Vision &amp; Image Enhancement</h3>
       <div class="skill-tags">
@@ -306,7 +363,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
         <span class="tag">Artifact Removal</span>
       </div>
     </div>
-    <div class="skill-card">
+    <div class="skill-card glass">
       <div class="skill-card-icon">&#127973;</div>
       <h3>Medical Imaging &amp; Classification</h3>
       <div class="skill-tags">
@@ -318,7 +375,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
         <span class="tag">Ensemble Learning</span>
       </div>
     </div>
-    <div class="skill-card">
+    <div class="skill-card glass">
       <div class="skill-card-icon">&#127919;</div>
       <h3>Object Detection &amp; RL</h3>
       <div class="skill-tags">
@@ -329,7 +386,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
         <span class="tag">Neural Architecture Search</span>
       </div>
     </div>
-    <div class="skill-card">
+    <div class="skill-card glass">
       <div class="skill-card-icon">&#129302;</div>
       <h3>LLMs &amp; Multimodal AI</h3>
       <div class="skill-tags">
@@ -339,7 +396,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
         <span class="tag">Domain Adaptation</span>
       </div>
     </div>
-    <div class="skill-card">
+    <div class="skill-card glass">
       <div class="skill-card-icon">&#9881;&#65039;</div>
       <h3>Frameworks &amp; Tools</h3>
       <div class="skill-tags">
@@ -352,7 +409,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
         <span class="tag">NumPy</span>
       </div>
     </div>
-    <div class="skill-card">
+    <div class="skill-card glass">
       <div class="skill-card-icon">&#128187;</div>
       <h3>Programming Languages</h3>
       <div class="skill-tags">
@@ -366,7 +423,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
+<section id="experience" class="reveal">
   <div class="section-label">Experience</div>
   <h2 class="section-title">Where I've worked</h2>
   <div class="timeline">
@@ -405,70 +462,74 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
 </section>
 
 <!-- PUBLICATIONS -->
-<section id="publications" style="background:var(--bg2)">
+<section id="publications" class="reveal">
   <div class="section-label">Research</div>
   <h2 class="section-title">Publications</h2>
 
-  <h3 style="font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text2);margin-bottom:1.2rem">Journal Articles</h3>
-  <div class="pub-list" style="margin-bottom:3rem">
-    <div class="pub">
+  <div class="pub-tabs">
+    <button class="pub-tab active" onclick="switchTab('journals',this)">Journal Articles</button>
+    <button class="pub-tab" onclick="switchTab('conferences',this)">Conference Papers</button>
+    <button class="pub-tab" onclick="switchTab('all',this)">All</button>
+  </div>
+
+  <div class="pub-group active" id="journals">
+    <div class="pub glass">
       <span class="pub-year">2024</span>
       <div class="pub-info">
         <h3>Lightweight Image Super-Resolution for IoT Devices Using Deep Residual Feature Distillation Network</h3>
-        <div class="pub-venue">Knowledge-Based Systems (Elsevier) &middot; <strong style="color:var(--accent)">IF 7.2</strong></div>
+        <div class="pub-venue">Knowledge-Based Systems (Elsevier) &middot; <strong>IF 7.2</strong></div>
         <a href="https://www.sciencedirect.com/science/article/pii/S0950705123010912" class="pub-link" target="_blank">View Paper &rarr;</a>
       </div>
       <span class="pub-badge published">Published</span>
     </div>
-    <div class="pub">
+    <div class="pub glass">
       <span class="pub-year">2026</span>
       <div class="pub-info">
         <h3>Gaming and Cooperation in Federated Learning: What Can Happen and How to Monitor It</h3>
-        <div class="pub-venue">Transactions on Machine Learning Research (TMLR) &middot; <strong style="color:var(--accent)">Top ML Venue</strong></div>
+        <div class="pub-venue">Transactions on Machine Learning Research (TMLR) &middot; <strong>Top ML Venue</strong></div>
         <a href="https://openreview.net/pdf?id=Ck3q5YdWIv" class="pub-link" target="_blank">View Paper &rarr;</a>
       </div>
       <span class="pub-badge published">Published</span>
     </div>
-    <div class="pub">
+    <div class="pub glass">
       <span class="pub-year">2025</span>
       <div class="pub-info">
         <h3>PixMed-Enhancer: An Efficient Approach for Medical Image Augmentation</h3>
-        <div class="pub-venue">Bioengineering (MDPI) &middot; <strong style="color:var(--accent)">IF 3.8</strong></div>
+        <div class="pub-venue">Bioengineering (MDPI) &middot; <strong>IF 3.8</strong></div>
         <a href="https://www.mdpi.com/2306-5354/12/3/235" class="pub-link" target="_blank">View Paper &rarr;</a>
       </div>
       <span class="pub-badge published">Published</span>
     </div>
-    <div class="pub">
+    <div class="pub glass">
       <span class="pub-year">2024</span>
       <div class="pub-info">
         <h3>KONet: Towards a Weighted Ensemble Learning Model for Knee Osteoporosis Classification</h3>
-        <div class="pub-venue">IEEE Access &middot; <strong style="color:var(--accent)">IF 3.4</strong></div>
+        <div class="pub-venue">IEEE Access &middot; <strong>IF 3.4</strong></div>
         <a href="https://ieeexplore.ieee.org/document/10379081" class="pub-link" target="_blank">View Paper &rarr;</a>
       </div>
       <span class="pub-badge published">Published</span>
     </div>
-    <div class="pub">
+    <div class="pub glass">
       <span class="pub-year">2025</span>
       <div class="pub-info">
         <h3>PixelCraftSR: Efficient Super-Resolution with Multi-Agent Reinforcement for Edge Devices</h3>
-        <div class="pub-venue">Sensors (MDPI) &middot; <strong style="color:var(--accent)">IF 3.4</strong></div>
+        <div class="pub-venue">Sensors (MDPI) &middot; <strong>IF 3.4</strong></div>
         <a href="https://www.mdpi.com/1424-8220/25/7/2242" class="pub-link" target="_blank">View Paper &rarr;</a>
       </div>
       <span class="pub-badge published">Published</span>
     </div>
-    <div class="pub">
+    <div class="pub glass">
       <span class="pub-year">2024</span>
       <div class="pub-info">
         <h3>A Comprehensive Survey on Real-Time Image Super-Resolution for IoT and Delay-Sensitive Applications</h3>
-        <div class="pub-venue">Applied Sciences (MDPI) &middot; <strong style="color:var(--accent)">IF 2.5</strong></div>
+        <div class="pub-venue">Applied Sciences (MDPI) &middot; <strong>IF 2.5</strong></div>
       </div>
       <span class="pub-badge published">Published</span>
     </div>
   </div>
 
-  <h3 style="font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text2);margin-bottom:1.2rem">Conference Papers</h3>
-  <div class="pub-list">
-    <div class="pub">
+  <div class="pub-group" id="conferences">
+    <div class="pub glass">
       <span class="pub-year">2025</span>
       <div class="pub-info">
         <h3>The Tenth NTIRE 2025 Image Denoising Challenge Report</h3>
@@ -477,7 +538,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
       </div>
       <span class="pub-badge coauthor">Challenge</span>
     </div>
-    <div class="pub">
+    <div class="pub glass">
       <span class="pub-year">2025</span>
       <div class="pub-info">
         <h3>LightDenoise-HL: A Compact Attention-Based Denoising Framework with Dual-Frequency Filtering for Endoscopic Imaging</h3>
@@ -485,7 +546,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
       </div>
       <span class="pub-badge first">1st Author</span>
     </div>
-    <div class="pub">
+    <div class="pub glass">
       <span class="pub-year">2025</span>
       <div class="pub-info">
         <h3>Punching Above Precision: Small Quantized Model Distillation with Learnable Regularizer</h3>
@@ -493,7 +554,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
       </div>
       <span class="pub-badge coauthor">Co-author</span>
     </div>
-    <div class="pub">
+    <div class="pub glass">
       <span class="pub-year">2025</span>
       <div class="pub-info">
         <h3>AlphaEnhancer: A Resource-aware Game Agent for Single Image Super-Resolution for Next-Gen Edge Communication Networks</h3>
@@ -501,7 +562,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
       </div>
       <span class="pub-badge coauthor">Co-author</span>
     </div>
-    <div class="pub">
+    <div class="pub glass">
       <span class="pub-year">2023</span>
       <div class="pub-info">
         <h3>MRESR: Multi-agent Reinforcement Learning for Efficient Super-Resolution</h3>
@@ -509,7 +570,7 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
       </div>
       <span class="pub-badge first">1st Author</span>
     </div>
-    <div class="pub">
+    <div class="pub glass">
       <span class="pub-year">2022</span>
       <div class="pub-info">
         <h3>EfficientNet-based Model for Knee Osteoarthritis Detection Using Transfer Learning Method</h3>
@@ -518,22 +579,24 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
       <span class="pub-badge first">1st Author</span>
     </div>
   </div>
+
+  <div class="pub-group" id="all"></div>
 </section>
 
 <!-- AWARDS -->
-<section id="awards">
+<section id="awards" class="reveal">
   <div class="section-label">Recognition</div>
   <h2 class="section-title">Scholarships &amp; Awards</h2>
   <div class="awards-list">
-    <div class="award">
+    <div class="award glass">
       <div class="award-icon">&#127941;</div>
       <div><h4>Gachon University Presidential Scholarship</h4><p>2018 &ndash; 2022</p></div>
     </div>
-    <div class="award">
+    <div class="award glass">
       <div class="award-icon">&#127891;</div>
       <div><h4>GRRC Scholarship</h4><p>Sept 2022 &ndash; Feb 2023</p></div>
     </div>
-    <div class="award">
+    <div class="award glass">
       <div class="award-icon">&#129504;</div>
       <div><h4>Brain Korea 21 Scholarship</h4><p>Feb 2023 &ndash; Aug 2024</p></div>
     </div>
@@ -541,22 +604,22 @@ footer{padding:2rem 6vw;text-align:center;font-size:.72rem;color:var(--text2);bo
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact-section">
+<section id="contact" class="contact-section reveal">
   <div class="section-label">Contact</div>
   <h2 class="section-title">Let's connect</h2>
   <div class="contact-inner">
     <p>Open to research collaborations, industry partnerships, and opportunities in AI research engineering. Feel free to reach out.</p>
     <div class="contact-links">
-      <a href="mailto:aashikrasool81@gmail.com" class="contact-link">&#9993; aashikrasool81@gmail.com</a>
-      <a href="https://github.com/aashikrasool" class="contact-link" target="_blank">&#8984; GitHub</a>
-      <a href="https://linkedin.com/in/aashik-rasool-504466204" class="contact-link" target="_blank">&#9638; LinkedIn</a>
-      <a href="https://scholar.google.com/citations?user=XI9KvGwAAAAJ&hl=en" class="contact-link" target="_blank">&#128214; Google Scholar</a>
-      <a href="https://openreview.net/profile?id=%7EMohamed_Jismy_Aashik_Rasool1" class="contact-link" target="_blank">&#128196; OpenReview</a>
+      <a href="mailto:aashikrasool81@gmail.com" class="contact-link glass">&#9993; aashikrasool81@gmail.com</a>
+      <a href="https://github.com/aashikrasool" class="contact-link glass" target="_blank">&#8984; GitHub</a>
+      <a href="https://linkedin.com/in/aashik-rasool-504466204" class="contact-link glass" target="_blank">&#9638; LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=XI9KvGwAAAAJ&hl=en" class="contact-link glass" target="_blank">&#128214; Google Scholar</a>
+      <a href="https://openreview.net/profile?id=%7EMohamed_Jismy_Aashik_Rasool1" class="contact-link glass" target="_blank">&#128196; OpenReview</a>
     </div>
   </div>
 </section>
 
-<footer>&copy; 2025 M.J. Aashik Rasool &middot; Built with HTML &middot; Hosted on GitHub Pages</footer>
+<footer>&copy; 2025 M.J. Aashik Rasool &middot; Built with passion &middot; Hosted on GitHub Pages</footer>
 
 <script>
 function toggleMenu(){
@@ -571,6 +634,35 @@ function closeMenu(){
   links.classList.remove('open');
   btn.textContent='\u2630';
 }
+
+/* Publication tabs */
+function switchTab(tab,el){
+  document.querySelectorAll('.pub-tab').forEach(function(t){t.classList.remove('active')});
+  el.classList.add('active');
+  document.querySelectorAll('.pub-group').forEach(function(g){g.classList.remove('active')});
+  if(tab==='all'){
+    var allDiv=document.getElementById('all');
+    allDiv.innerHTML='';
+    var journals=document.getElementById('journals').cloneNode(true);
+    var confs=document.getElementById('conferences').cloneNode(true);
+    Array.from(journals.children).forEach(function(c){allDiv.appendChild(c.cloneNode(true))});
+    Array.from(confs.children).forEach(function(c){allDiv.appendChild(c.cloneNode(true))});
+    allDiv.classList.add('active');
+  } else {
+    document.getElementById(tab).classList.add('active');
+  }
+}
+
+/* Scroll reveal */
+var revealEls=document.querySelectorAll('.reveal');
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.1});
+revealEls.forEach(function(el){observer.observe(el)});
 </script>
 </body>
 </html>
