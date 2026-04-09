@@ -157,6 +157,9 @@ section{padding:6rem 6vw;position:relative;z-index:1}
 .award h4{font-size:.88rem;font-weight:500}
 .award p{font-size:.75rem;color:var(--text2);font-weight:300}
 
+/* EDUCATION DEGREE CARDS */
+.edu-degree{font-size:.72rem;font-weight:600;display:inline-block;margin-bottom:.3rem;padding:.2rem .7rem;border-radius:6px;background:linear-gradient(135deg,rgba(126,184,255,.1),rgba(167,139,250,.1));border:1px solid rgba(126,184,255,.15);color:var(--accent);letter-spacing:.04em;text-transform:uppercase}
+
 /* CONTACT */
 .contact-section{background:transparent}
 .contact-inner{max-width:600px}
@@ -266,6 +269,7 @@ footer{padding:2.5rem 6vw;text-align:center;font-size:.7rem;color:var(--text2);b
     <a href="#skills" onclick="closeMenu()">Skills</a>
     <a href="#experience" onclick="closeMenu()">Experience</a>
     <a href="#publications" onclick="closeMenu()">Research</a>
+    <a href="#education" onclick="closeMenu()">Education</a>
     <a href="#awards" onclick="closeMenu()">Awards</a>
     <a href="#contact" onclick="closeMenu()">Contact</a>
   </div>
@@ -581,6 +585,46 @@ footer{padding:2.5rem 6vw;text-align:center;font-size:.7rem;color:var(--text2);b
   </div>
 
   <div class="pub-group" id="all"></div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="reveal">
+  <div class="section-label">Education</div>
+  <h2 class="section-title">Academic Background</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="edu-degree">PhD &mdash; Doctor of Philosophy</div>
+      <h3>Gachon University</h3>
+      <div class="role">Computer Engineering</div>
+      <div class="meta"><span>2024 &ndash; Present</span><span>Seongnam-si, South Korea</span></div>
+      <ul>
+        <li>GPA: 4.3 / 4.5</li>
+        <li>Research focus: Single viewpoint 3D image reconstruction, Computer Vision, Image Super-Resolution, Medical Imaging, Edge AI</li>
+        
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="edu-degree">Master&rsquo;s Degree</div>
+      <h3>Gachon University</h3>
+      <div class="role">Computer Engineering</div>
+      <div class="meta"><span>Aug 2022 &ndash; Aug 2024</span><span>Seongnam-si, South Korea</span></div>
+      <ul>
+        <li>Skills: Computer Vision, Image Super-Resolution, Medical Imaging, Edge AI</li>
+        <li>GRRC Scholarship (Sept 2022 &ndash; Feb 2023)</li>
+        <li>Brain Korea 21 (BK21) Scholarship (Feb 2023 &ndash; Aug 2024)</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <div class="edu-degree">Bachelor&rsquo;s Degree</div>
+      <h3>Gachon University</h3>
+      <div class="role">Computer Engineering &mdash; Machine Learning</div>
+      <div class="meta"><span>2018 &ndash; 2022</span><span>Seongnam-si, South Korea</span></div>
+      <ul>
+        <li>Skills: Machine Learning</li>
+        <li>Gachon University Presidential Scholarship (2018 &ndash; 2022)</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <!-- AWARDS -->
